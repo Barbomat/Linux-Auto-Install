@@ -69,7 +69,11 @@ Programas_Remover_RPM=(
     yelp
     cheese
     gnome-font-viewer
-    libreoffice
+    libreoffice-core
+    gnome-abrt
+    rhythmbox
+    gnome-tour
+    simple-scan
     gnome-music
     gnome-calendar
     gnome-text-editor
@@ -99,34 +103,12 @@ Programas_Instalar_RPM=(
 
 
 # ================================================================== #
-#                ATUALIZANDO E LIMPANDO O SISTEMA                    #
-# ================================================================== #
-
-sudo dnf autoremove -y
-printf "\n\n"
-
-sudo dnf update -y
-printf "\n\n"
-
-flatpak update -y
-printf "\n\n"
-
-
-# ================================================================== #
 #                       REMOVENDO PROGRAMAS                          #
 # ================================================================== #
 
 for nome_do_programa in ${Programas_Remover_RPM[@]}; do
-
-    if ! dpkg -l | grep -q $nome_do_programa; then
-        echo "O programa $nome_do_programa não está instalado."
-        printf "\n\n"
-
-    else
-        sudo dnf autoremove $nome_do_programa -y
-        printf "\n\n"
-    fi
-
+    sudo dnf autoremove $nome_do_programa -y
+    printf "\n\n"
 done
 
 flatpak install spotify -y
@@ -137,16 +119,13 @@ flatpak install spotify -y
 # ================================================================== #
 
 for nome_do_programa in ${Programas_Instalar_RPM[@]}; do
-    
     if ! dpkg -l | grep -q $nome_do_programa; then
         sudo dnf install $nome_do_programa -y
         printf "\n\n"
-
     else
         echo "O programa $nome_do_programa já está instalado."
         printf "\n\n"
     fi
-
 done
 
 
