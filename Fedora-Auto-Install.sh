@@ -111,8 +111,6 @@ for nome_do_programa in ${Programas_Remover_RPM[@]}; do
     printf "\n\n"
 done
 
-flatpak install spotify -y
-
 
 # ================================================================== #
 #                       INSTALANDO PROGRAMAS                         #
@@ -127,6 +125,8 @@ for nome_do_programa in ${Programas_Instalar_RPM[@]}; do
         printf "\n\n"
     fi
 done
+
+flatpak install spotify -y
 
 
 # ================================================================== #
