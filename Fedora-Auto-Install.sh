@@ -19,17 +19,30 @@ printf "\n\n"
 
 
 # ================================================================== #
+#                ATUALIZANDO E LIMPANDO O SISTEMA                    #
+# ================================================================== #
+
+sudo dnf update -y
+printf "\n\n"
+
+sudo dnf autoremove -y
+printf "\n\n"
+
+flatpak update -y
+printf "\n\n"
+
+flatpak remove --unused -y
+printf "\n\n"
+
+# ================================================================== #
 #                     ADICIONANDO REPOSITÓRIOS                       #
 # ================================================================== #
 
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
-printf "\n\n"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-printf "\n\n"
 
 flatpak remote-add appcenter --if-not-exists https://flatpak.elementary.io/repo.flatpakrepo
-printf "\n\n"
 
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
 printf "\n\n"
@@ -92,7 +105,6 @@ Programas_Instalar_RPM=(
     gnome-terminal
     firefox
     speedtest-cli
-    duf
     nano
     gtranslator
     codium
@@ -107,8 +119,13 @@ Programas_Instalar_RPM=(
 # ================================================================== #
 
 for nome_do_programa in ${Programas_Remover_RPM[@]}; do
-    sudo dnf autoremove $nome_do_programa -y
-    printf "\n\n"
+    if dnf list --installed | grep -q $nome_do_programa; then
+    	sudo dnf autoremove $nome_do_programa -y
+    	printf "\n\n"
+    else
+        echo "O programa $nome_do_programa não está instalado."
+        printf "\n\n"
+    fi
 done
 
 
@@ -117,7 +134,7 @@ done
 # ================================================================== #
 
 for nome_do_programa in ${Programas_Instalar_RPM[@]}; do
-    if ! dpkg -l | grep -q $nome_do_programa; then
+    if ! dnf list --installed | grep -q $nome_do_programa; then
         sudo dnf install $nome_do_programa -y
         printf "\n\n"
     else
@@ -125,8 +142,6 @@ for nome_do_programa in ${Programas_Instalar_RPM[@]}; do
         printf "\n\n"
     fi
 done
-
-flatpak install spotify -y
 
 
 # ================================================================== #
