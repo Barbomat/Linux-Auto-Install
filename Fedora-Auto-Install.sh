@@ -148,6 +148,8 @@ done
 #                          PÓS INSTALAÇÃO                            #
 # ================================================================== #
 
+cp ~/Downloads/Linux-Auto-Install/JetBrains_Mono_Slashed.otf ~/.local/share/fonts
+
 sudo dnf update -y
 printf "\n\n"
 
