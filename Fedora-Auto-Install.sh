@@ -34,6 +34,7 @@ printf "\n\n"
 flatpak remove --unused -y
 printf "\n\n"
 
+
 # ================================================================== #
 #                     ADICIONANDO REPOSITÓRIOS                       #
 # ================================================================== #
@@ -58,6 +59,7 @@ printf "\n\n"
 
 sudo dnf group upgrade --with-optional Multimedia -y
 printf "\n\n"
+
 
 # ================================================================== #
 #                             VARIÁVEIS                              #
@@ -104,13 +106,10 @@ Programas_Remover_RPM=(
 Programas_Instalar_RPM=(
     gnome-terminal
     firefox
-    speedtest-cli
     nano
-    gtranslator
+    code
     codium
     rsms-inter-fonts
-    jetbrains-mono-nl-fonts
-    gnome-tweaks
 )
 
 
@@ -145,10 +144,43 @@ done
 
 
 # ================================================================== #
-#                          PÓS INSTALAÇÃO                            #
+#                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
 # ================================================================== #
 
+cp ~/Downloads/Linux-Auto-Install/William-Daigneault.jpg ~/.local/share/backgrounds
+
 cp ~/Downloads/Linux-Auto-Install/JetBrains_Mono_Slashed.otf ~/.local/share/fonts
+
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.90
+
+gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/William-Daigneault.jpg
+
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/William-Daigneault.jpg
+
+gsettings set org.gnome.desktop.interface clock-show-date false
+
+gsettings set org.gnome.desktop.interface clock-show-weekdate false
+
+gsettings set org.gnome.desktop.interface clock-format '24h'
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'dark'
+
+gsettings set org.gnome.desktop.interface document-font-name 'Inter Regular 12'
+
+gsettings set org.gnome.desktop.interface font-name 'Inter Regular 12'
+
+gsettings set org.gnome.desktop.interface monospace-font-name 'Jetbrains Mono Slashed 12'
+
+gsettings set org.gnome.desktop.interface font-alialiasing 'rgba'
+
+gsettings set org.gnome.desktop.interface font-hinting 'full'
+
+
+# ================================================================== #
+#                          PÓS INSTALAÇÃO                            #
+# ================================================================== #
 
 sudo dnf update -y
 printf "\n\n"
@@ -160,14 +192,5 @@ flatpak update -y
 printf "\n\n"
 
 flatpak remove --unused -y
-printf "\n\n"
-
-
-# ================================================================== #
-#                           O QUE FALTA                              #
-# ================================================================== #
-
-echo "A se Fazer:  Ir no Gnome Tweaks, mudar as fontes e reduzir a escala da tela para 0,90."
-echo "A se Fazer:  Ir no Google Drive e baixar o meu wallpaper pessoal."
 printf "\n\n"
 
