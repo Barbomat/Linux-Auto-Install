@@ -106,9 +106,7 @@ Programas_Remover_RPM=(
 Programas_Instalar_RPM=(
     gnome-terminal
     firefox
-    nano
     code
-    codium
     rsms-inter-fonts
 )
 
@@ -147,15 +145,15 @@ done
 #                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
 # ================================================================== #
 
-cp ~/Downloads/Linux-Auto-Install/William-Daigneault.jpg ~/.local/share/backgrounds
+cp ~/Downloads/Linux-Auto-Install/Buon-Minimalist-Wall_Desktop_Dark.jpg ~/.local/share/backgrounds
 
 cp ~/Downloads/Linux-Auto-Install/JetBrains_Mono_Slashed.otf ~/.local/share/fonts
 
 gsettings set org.gnome.desktop.interface text-scaling-factor 0.90
 
-gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/William-Daigneault.jpg
+gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/Buon-Minimalist-Wall_Desktop_Dark.jpg
 
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/William-Daigneault.jpg
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/Buon-Minimalist-Wall_Desktop_Dark.jpg
 
 gsettings set org.gnome.desktop.interface clock-show-date false
 
