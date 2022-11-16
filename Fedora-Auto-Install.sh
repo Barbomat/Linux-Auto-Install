@@ -108,6 +108,7 @@ Programas_Instalar_RPM=(
     firefox
     code
     rsms-inter-fonts
+    rust
 )
 
 
