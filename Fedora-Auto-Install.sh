@@ -39,13 +39,13 @@ printf "\n\n"
 #                     ADICIONANDO REPOSITÓRIOS                       #
 # ================================================================== #
 
-sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpak remote-add appcenter --if-not-exists https://flatpak.elementary.io/repo.flatpakrepo
 
-printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+printf "[vscode]\nname=packages.microsoft.com\nbaseurl=https://packages.microsoft.com/yumrepos/vscode/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscode.repo
 printf "\n\n"
 
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -145,6 +145,8 @@ done
 # ================================================================== #
 #                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
 # ================================================================== #
+
+cd ~/.local/share && mkdir -p fonts
 
 cp ~/Downloads/Linux-Auto-Install/Buon-Minimalist-Wall_Desktop_Dark.jpg ~/.local/share/backgrounds
 
