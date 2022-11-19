@@ -31,9 +31,6 @@ printf "\n\n"
 flatpak update -y
 printf "\n\n"
 
-flatpak remove --unused -y
-printf "\n\n"
-
 
 # ================================================================== #
 #                     ADICIONANDO REPOSITÓRIOS                       #
@@ -45,7 +42,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 flatpak remote-add appcenter --if-not-exists https://flatpak.elementary.io/repo.flatpakrepo
 
-printf "[vscode]\nname=packages.microsoft.com\nbaseurl=https://packages.microsoft.com/yumrepos/vscode/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscode.repo
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 printf "\n\n"
 
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -147,17 +144,13 @@ done
 #                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
 # ================================================================== #
 
-cd ~/.local/share && mkdir -p fonts
+cp ~/Downloads/Linux-Auto-Install/Windows-11_Desktop_Light.jpg ~/.local/share/backgrounds
 
-cp ~/Downloads/Linux-Auto-Install/Buon-Minimalist-Wall_Desktop_Dark.jpg ~/.local/share/backgrounds
+gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Light.jpg
 
-cp ~/Downloads/Linux-Auto-Install/JetBrains_Mono_Slashed.otf ~/.local/share/fonts
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Light.jpg
 
 gsettings set org.gnome.desktop.interface text-scaling-factor 0.90
-
-gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/Buon-Minimalist-Wall_Desktop_Dark.jpg
-
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/Buon-Minimalist-Wall_Desktop_Dark.jpg
 
 gsettings set org.gnome.desktop.interface clock-show-date false
 
@@ -165,19 +158,27 @@ gsettings set org.gnome.desktop.interface clock-show-weekdate false
 
 gsettings set org.gnome.desktop.interface clock-format '24h'
 
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'default'
 
-gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'dark'
+gsettings set org.gnome.desktop.interface font-name 'Inter Medium 12'
 
-gsettings set org.gnome.desktop.interface document-font-name 'Inter Regular 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Inter Medium 12'
 
-gsettings set org.gnome.desktop.interface font-name 'Inter Regular 12'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Bold 12'
 
-gsettings set org.gnome.desktop.interface monospace-font-name 'Jetbrains Mono Slashed 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono Regular 15'
 
 gsettings set org.gnome.desktop.interface font-alialiasing 'rgba'
 
-gsettings set org.gnome.desktop.interface font-hinting 'full'
+gsettings set org.gnome.desktop.interface font-hinting 'none'
+
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'system'
+
+gsettings set org.gnome.Terminal.Legacy.Profile:/barbomat/ use-system-font true
+
+gsettings set org.gnome.desktop.sound event-sounds false
+
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 
 # ================================================================== #
