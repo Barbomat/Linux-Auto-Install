@@ -98,6 +98,9 @@ Programas_Remover_RPM=(
     gedit
     mediawriter
     gnome-software
+    abattis-cantarell-fonts
+    abattis-cantarell-vf-fonts
+    liberation-serif-fonts
 )
 
 Programas_Instalar_RPM=(
