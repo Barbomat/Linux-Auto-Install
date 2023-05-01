@@ -11,11 +11,78 @@
 
 
 # ================================================================== #
+#                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
+# ================================================================== #
+
+gsettings set org.gnome.desktop.interface enable-hot-corners false
+
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+
+gsettings set org.gnome.desktop.interface text-scaling-factor 0.90
+
+gsettings set org.gnome.desktop.interface clock-show-date false
+
+gsettings set org.gnome.desktop.interface clock-show-weekday false
+
+gsettings set org.gnome.desktop.interface clock-format '24h'
+
+gsettings set org.gnome.desktop.interface color-scheme 'default'
+
+gsettings set org.gnome.desktop.interface font-hinting 'none'
+
+gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'system'
+
+gsettings set org.gnome.Terminal.Legacy.Profile:/barbomat/ use-system-font true
+
+gsettings set org.gnome.desktop.sound event-sounds false
+
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+gsettings set org.gnome.desktop.notifications show-in-lock-screen false
+
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+
+gsettings set org.gnome.desktop.peripherals.touchpad speed 0.53383458646616533
+
+gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag true
+
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+
+gsettings set org.gnome.desktop.privacy remember-recent-files false
+
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>Left']"
+
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>Right']"
+
+cp ~/Downloads/Linux-Auto-Install/Fonts/* ~/.local/share/fonts
+
+cp ~/Downloads/Linux-Auto-Install/Wallpapers/* ~/.local/share/backgrounds
+
+fc-cache -f -v
+
+gsettings set org.gnome.desktop.interface font-name 'Roboto Flex Medium 12'
+
+gsettings set org.gnome.desktop.interface document-font-name 'Roboto Flex Medium 12'
+
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Flex Bold 12'
+
+gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono Slashed Regular 14'
+
+gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Light.jpg
+
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Dark.jpg
+
+printf "\n\nRealizou todas as configurações de sistema com sucesso."
+printf "\n\n"
+
+
+# ================================================================== #
 #                         ACELERANDO O DNF                           #
 # ================================================================== #
 
 sudo sed -i 's/max_parallel_downloads=3/max_parallel_downloads=20/g' /etc/dnf/dnf.conf
-printf "\n\n"
 
 
 # ================================================================== #
@@ -39,8 +106,6 @@ printf "\n\n"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-flatpak remote-add appcenter --if-not-exists https://flatpak.elementary.io/repo.flatpakrepo
 
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 printf "\n\n"
@@ -109,7 +174,6 @@ Programas_Instalar_RPM=(
     code
     rsms-inter-fonts
     google-roboto-mono-fonts
-    rust
 )
 
 
@@ -141,47 +205,6 @@ for nome_do_programa in ${Programas_Instalar_RPM[@]}; do
         printf "\n\n"
     fi
 done
-
-
-# ================================================================== #
-#                 ALTERANDO CONFIGURAÇÕES DO SISTEMA                 #
-# ================================================================== #
-
-cp ~/Downloads/Linux-Auto-Install/Windows-11_Desktop_Light.jpg ~/.local/share/backgrounds
-
-gsettings set org.gnome.desktop.background picture-uri file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Light.jpg
-
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/barbomat/.local/share/backgrounds/Windows-11_Desktop_Light.jpg
-
-gsettings set org.gnome.desktop.interface text-scaling-factor 0.90
-
-gsettings set org.gnome.desktop.interface clock-show-date false
-
-gsettings set org.gnome.desktop.interface clock-show-weekdate false
-
-gsettings set org.gnome.desktop.interface clock-format '24h'
-
-gsettings set org.gnome.desktop.interface color-scheme 'default'
-
-gsettings set org.gnome.desktop.interface font-name 'Inter Medium 12'
-
-gsettings set org.gnome.desktop.interface document-font-name 'Inter Medium 12'
-
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Bold 12'
-
-gsettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono Regular 15'
-
-gsettings set org.gnome.desktop.interface font-alialiasing 'rgba'
-
-gsettings set org.gnome.desktop.interface font-hinting 'none'
-
-gsettings set org.gnome.Terminal.Legacy.Settings theme-variant 'system'
-
-gsettings set org.gnome.Terminal.Legacy.Profile:/barbomat/ use-system-font true
-
-gsettings set org.gnome.desktop.sound event-sounds false
-
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 
 # ================================================================== #
