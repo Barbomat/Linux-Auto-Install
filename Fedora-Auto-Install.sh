@@ -62,11 +62,11 @@ cp ~/Downloads/Linux-Auto-Install/Wallpapers/* ~/.local/share/backgrounds
 
 fc-cache -f -v
 
-gsettings set org.gnome.desktop.interface font-name 'Roboto Flex Medium 12'
+gsettings set org.gnome.desktop.interface font-name 'Inter Medium 12'
 
-gsettings set org.gnome.desktop.interface document-font-name 'Roboto Flex Medium 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Inter Medium 12'
 
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Flex Bold 12'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Bold 12'
 
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono Slashed Regular 14'
 
@@ -103,11 +103,11 @@ printf "\n\n"
 #                     ADICIONANDO REPOSITÓRIOS                       #
 # ================================================================== #
 
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
 printf "\n\n"
 
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
@@ -171,8 +171,7 @@ Programas_Remover_RPM=(
 Programas_Instalar_RPM=(
     gnome-terminal
     firefox
-    code
-    rsms-inter-fonts
+    codium
     google-roboto-mono-fonts
 )
 
