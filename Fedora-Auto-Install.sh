@@ -56,6 +56,8 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Supe
 
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>Right']"
 
+mkdir ~/.local/share/fonts
+
 cp ~/Downloads/Linux-Auto-Install/Fonts/* ~/.local/share/fonts
 
 cp ~/Downloads/Linux-Auto-Install/Wallpapers/* ~/.local/share/backgrounds
@@ -135,7 +137,7 @@ Programas_Remover_RPM=(
     gnome-photos
     gnome-connections
     gnome-calculator
-    gnome-console
+    gnome-terminal
     gnome-disk-utility
     gnome-system-monitor
     gnome-boxes
@@ -169,7 +171,7 @@ Programas_Remover_RPM=(
 )
 
 Programas_Instalar_RPM=(
-    gnome-terminal
+    gnome-console
     firefox
     codium
     google-roboto-mono-fonts
