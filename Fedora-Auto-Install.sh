@@ -64,11 +64,11 @@ cp ~/Downloads/Linux-Auto-Install/Wallpapers/* ~/.local/share/backgrounds
 
 fc-cache -f -v
 
-gsettings set org.gnome.desktop.interface font-name 'Inter Medium 12'
+gsettings set org.gnome.desktop.interface font-name 'Inter Variable Medium 12'
 
-gsettings set org.gnome.desktop.interface document-font-name 'Inter Medium 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Inter Variable Medium 12'
 
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Bold 12'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Inter Variable Bold 12'
 
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono Slashed Regular 14'
 
